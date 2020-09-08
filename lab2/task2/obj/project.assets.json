@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KriSWhitch\\OOP-2020Q3-4\\lab2\\lab2\\task1.csproj",
-      "projectName": "task1",
-      "projectPath": "C:\\Users\\KriSWhitch\\OOP-2020Q3-4\\lab2\\lab2\\task1.csproj",
+      "projectUniqueName": "C:\\Users\\KriSWhitch\\OOP-2020Q3-4\\lab2\\task2\\task2.csproj",
+      "projectName": "task2",
+      "projectPath": "C:\\Users\\KriSWhitch\\OOP-2020Q3-4\\lab2\\task2\\task2.csproj",
       "packagesPath": "C:\\Users\\KriSWhitch\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KriSWhitch\\OOP-2020Q3-4\\lab2\\lab2\\obj\\",
+      "outputPath": "C:\\Users\\KriSWhitch\\OOP-2020Q3-4\\lab2\\task2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KriSWhitch\\AppData\\Roaming\\NuGet\\NuGet.Config",

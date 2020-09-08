@@ -106,12 +106,13 @@ namespace lab2
             Console.WriteLine($"{l2}");
             l2 = null;
             Console.WriteLine($"{l2}");
-
+            /*
             int l1 = null;
 
 
             var i1 = 42; // переменная объявленная через var является строготипизированой
             i1 = "hello"; //ошибка
+            */
         }
     }
 }
