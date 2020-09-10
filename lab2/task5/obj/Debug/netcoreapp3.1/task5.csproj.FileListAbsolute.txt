@@ -1,0 +1,13 @@
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\bin\Debug\netcoreapp3.1\task5.exe
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\bin\Debug\netcoreapp3.1\task5.deps.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\bin\Debug\netcoreapp3.1\task5.runtimeconfig.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\bin\Debug\netcoreapp3.1\task5.runtimeconfig.dev.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\bin\Debug\netcoreapp3.1\task5.dll
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\bin\Debug\netcoreapp3.1\task5.pdb
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\obj\Debug\netcoreapp3.1\task5.csprojAssemblyReference.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\obj\Debug\netcoreapp3.1\task5.AssemblyInfoInputs.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\obj\Debug\netcoreapp3.1\task5.AssemblyInfo.cs
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\obj\Debug\netcoreapp3.1\task5.csproj.CoreCompileInputs.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\obj\Debug\netcoreapp3.1\task5.dll
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\obj\Debug\netcoreapp3.1\task5.pdb
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab2\task5\obj\Debug\netcoreapp3.1\task5.genruntimeconfig.cache
