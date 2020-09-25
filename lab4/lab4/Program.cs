@@ -4,9 +4,78 @@ using System.Linq;
 namespace lab4
 {
 
+    static class StatisticOperation
+    {
+
+        public static List Sum(List c1, List c2)
+        {
+            for (int i = 0; i < c2.array.Length; i++) c1.AppendToEnd(c2.array[i]);
+            return c1;
+        }
+
+        public static void CountListElements(List c1)
+        {
+            Console.WriteLine($"Список содержит {c1.array.Length} элементов");
+        }
+
+        public static void CapitalizedWords(this string str)
+        {
+            string[] strArray = str.Split(" ");
+            int sum = 0;
+            for (int i = 0; i < strArray.Length; i++)
+            {
+                if (strArray[i].ToCharArray()[0].ToString() == strArray[i].ToCharArray()[0].ToString().ToUpper()) sum++;
+            }
+            Console.WriteLine($"В данной строке {sum} слов начинается с большой буквы");
+        }
+    }
+
     class List
     {
-        public string[] array;
+
+        public class Owner
+        {
+            int id;
+            string ownerName;
+            string ownerOrganization;
+
+
+            public Owner()
+            {
+                this.id = GetHashCode();
+                this.ownerName = $"Имя неизвестно";
+                this.ownerOrganization = $"Название организации неизвестно";
+            }
+
+            public Owner(string ownerName, string ownerOrganization)
+            {
+                this.id = GetHashCode();
+                this.ownerName = ownerName;
+                this.ownerOrganization = ownerOrganization;
+            }
+
+            public void DisplayToConsole()
+            {
+                Console.WriteLine($"ID: {id}\n" +
+                    $"Имя создателя: {ownerName}\n" +
+                    $"Название организации: {ownerOrganization}");
+            }
+
+        }
+
+
+        public class Date
+        {
+            DateTime creationDate = DateTime.Now;
+
+            public void DisplayCreationDateToConsole()
+            {
+                Console.WriteLine($"Дата создания: {creationDate}");
+            }
+        }
+
+
+    public string[] array;
 
         public List()
         {
@@ -146,6 +215,8 @@ namespace lab4
     {
         static void Main(string[] args)
         {
+            // task 1
+            Console.WriteLine("Задание №1");
             string[] array = new string[] { "1" };
             List fList = new List(array);
             fList.DisplayListToConsole();
@@ -169,6 +240,27 @@ namespace lab4
             Console.WriteLine($"Список после объединения: ");
             result = tList * sList;
             result.DisplayListToConsole();
+            // task 2
+            Console.WriteLine("Задание №2");
+            List.Owner own1 = new List.Owner("Алексей", "Andersen");
+            own1.DisplayToConsole();
+            // task 3
+            Console.WriteLine("Задание №3");
+            List.Date cr1 = new List.Date();
+            cr1.DisplayCreationDateToConsole();
+            // task 4
+            Console.WriteLine("Задание №4");
+            Console.WriteLine($"Списки до объединения: ");
+            result.DisplayListToConsole();
+            fList.DisplayListToConsole();
+            List result2 = StatisticOperation.Sum(result, fList);
+            Console.WriteLine($"Список после объединения: ");
+            result2.DisplayListToConsole();
+            StatisticOperation.CountListElements(result2);
+            // task 5
+            Console.WriteLine("Задание №5");
+            "Добрый день, как Ваши дела? У меня Всё ПРЕКРАСНО!".CapitalizedWords();
+
         }
     }
 }
