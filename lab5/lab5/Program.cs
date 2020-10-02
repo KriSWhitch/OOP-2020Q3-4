@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace lab5
 {
@@ -62,30 +63,93 @@ namespace lab5
             result += ")";
             Console.WriteLine($"Список: {result}");
         }
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"";
+        }
     }
 
     class Pastry : Product
     {
-        
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"";
+        }
     }
 
     class Goods : Product
     {
-        
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"";
+        }
     }
 
     class Flowers : Goods
     {
-        
+        public Flowers()
+        {
+            this.name = "Без имени";
+        }
+
+        public Flowers(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название цветов: {name}";
+        }
     }
 
     class Cake : Pastry {
-        
+        public Cake()
+        {
+            this.name = "Без имени";
+        }
+
+        public Cake(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название торта: {name}";
+        }
     }
 
     class Clock : Goods
     {
+        public Clock()
+        {
+            this.name = "Без имени";
+        }
 
+        public Clock(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название часов: {name}";
+        }
     }
 
     class Sweets : Goods
@@ -103,6 +167,13 @@ namespace lab5
         {
             Console.WriteLine($"Название конфет: {name}");
         }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название конфет: {name}";
+        }
     }
 
 
@@ -118,6 +189,13 @@ namespace lab5
     abstract class Move
     {
         public abstract void GetInfo();
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"";
+        }
     }
 
     class Run : Move, IMovable
@@ -132,9 +210,24 @@ namespace lab5
         {
             Console.WriteLine("Oh, hi Mark! from Abstract Class");
         }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"";
+        }
     }
     //
 
+    class Printer
+    {
+        public void IAmPrinting(object someObj)
+        {
+            Console.WriteLine($"Тип объекта ( из IAmPrinting): {someObj.GetType()}\n" +
+                $"Использование ToString этого объекта: \n{someObj.ToString()}\n");
+        }
+    }
 
     class Program
     {
@@ -149,6 +242,14 @@ namespace lab5
             m1.GetInfo();
             IMovable m2 = new Run();
             m2.GetInfo();
+            Clock s2 = new Clock("Rolex");
+            Cake s3 = new Cake("Графские развалины");
+            object[] testArray = new object[] { s1, s2, s3 };
+            Printer p1 = new Printer();
+            for (int i = 0; i < testArray.Length; i++)
+            {
+                p1.IAmPrinting(testArray[i]);
+            }
         }
         
 
