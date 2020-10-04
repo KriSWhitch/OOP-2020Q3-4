@@ -154,18 +154,45 @@ namespace lab5
 
     class Sweets : Goods
     {
+        int id;
+
         public Sweets()
         {
             this.name = "Без имени";
+            this.id = GetHashCode();
         }
 
         public Sweets(string name)
         {
             this.name = name;
+            this.id = GetHashCode();
         }
         public virtual void GetInfo()
         {
             Console.WriteLine($"Название конфет: {name}");
+        }
+
+        public string GetType()
+        {
+            return $"Конфеты";
+        }
+
+        public override bool Equals(object obj)
+        {
+            var item = obj as Sweets;
+
+            if (item == null)
+            {
+                return false;
+            }
+
+            return this.id.Equals(item.id);
+
+        }
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCode() + 17;
         }
 
         public override string ToString()
@@ -229,19 +256,39 @@ namespace lab5
         }
     }
 
+    sealed class Root  // от этого класса нельзя наследовать
+    { 
+
+    }
+
     class Program
     {
         //Продукт, Кондитерское изделие, Товар, Цветы, Торт, Часы, Конфеты;
 
         static void Main(string[] args)
         {
+            // Задание 1
+            Console.WriteLine($"Задание №1");
             Sweets s1 = new Sweets("Алёнка");
-            s1.GetInfo();
-            // Задание 4
+            Sweets s0 = new Sweets("Пчёлка");
+            Console.WriteLine(s1.Equals(s0));
+            s1.ToString();
+            // Задание 2, 3, 4
+            Console.WriteLine($"Задание №2,3,4");
             Run m1 = new Run();
             m1.GetInfo();
             IMovable m2 = new Run();
             m2.GetInfo();
+            // Задание 5
+            Console.WriteLine($"Задание №5");
+            Goods a = new Goods();
+            Sweets s = new Sweets();
+            if (a is Goods)
+                Console.WriteLine("Переменная a имеет тип Goods");
+            if (s is Sweets)
+                Console.WriteLine("Тип переменной s унаследован от класса Goods");
+            // Задание 6, 7
+            Console.WriteLine($"Задание №6,7");
             Clock s2 = new Clock("Rolex");
             Cake s3 = new Cake("Графские развалины");
             object[] testArray = new object[] { s1, s2, s3 };
