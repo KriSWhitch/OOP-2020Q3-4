@@ -132,37 +132,38 @@ namespace lab3
         public Product()
         { // 1 конструктор (без параметров)
             countW++;
-            id = GetHashCode(); 
             productName = "Неизвестно";
             productProducer = "Неизвестно";
             cost = 0;
             upc = 000000;
             expirationDate = new DateTime(2020, 01, 01);
             amount = 0;
+            id = GetHashCode();
         }      
 
         public Product(string productName = "Неизвестно", string productProducer = "Неизвестно", float cost = 0)
         { // 2 конструктор
             countW++;
-            id = GetHashCode();
+            
             this.productName = productName;
             this.productProducer = productProducer;
             this.cost = cost;
             upc = 000000;
             expirationDate = new DateTime(2020, 01, 01);
             amount = 0;
+            id = GetHashCode();
         }         
 
         public Product(string productName, string productProducer, float cost, int upc, DateTime expirationDate, int amount)
         { // 3 конструктор (с параметрами)
             countW++;
-            id = GetHashCode();
             this.productName = productName;
             this.productProducer = productProducer;
             this.cost = cost;
             this.upc = upc;
             this.expirationDate = expirationDate;
             this.amount = amount;
+            id = GetHashCode();
         }
         override public string ToString()
         {
@@ -174,6 +175,23 @@ namespace lab3
                 $"\nСрок хранения: до {expirationDate}" +
                 $"\nКоличество продуктов на складе: {amount}";
         }
+
+        public override int GetHashCode()
+        {
+            return Math.Abs(upc.GetHashCode() + productName.GetHashCode());
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            Product m = obj as Product; // возвращает null если объект нельзя привести к типу Money
+            if (m as Product == null)
+                return false;
+
+            return m.id == this.id && m.productName == this.productName;
+        }
+
         public void GetInfo()
         {
             Console.WriteLine(
@@ -272,6 +290,7 @@ namespace lab3
             Console.WriteLine(pr4.ToString());
             Console.WriteLine(pr4.GetType());
             Console.WriteLine(pr1.Equals(pr3));
+            Console.WriteLine(pr1.Equals(pr1));
             var pr5 = new { ProductName = "Молоко", ProductProducer = "Савушкин", Cost = 1000, Upc = 330413, date1, Amount = 80 };
             Console.WriteLine(pr5.GetType());
             var productArray = new List<object>();
