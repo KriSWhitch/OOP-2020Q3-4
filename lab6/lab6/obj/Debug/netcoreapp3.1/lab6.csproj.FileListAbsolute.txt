@@ -1,0 +1,13 @@
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\bin\Debug\netcoreapp3.1\lab6.exe
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\bin\Debug\netcoreapp3.1\lab6.deps.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\bin\Debug\netcoreapp3.1\lab6.runtimeconfig.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\bin\Debug\netcoreapp3.1\lab6.runtimeconfig.dev.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\bin\Debug\netcoreapp3.1\lab6.dll
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\bin\Debug\netcoreapp3.1\lab6.pdb
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\obj\Debug\netcoreapp3.1\lab6.csprojAssemblyReference.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\obj\Debug\netcoreapp3.1\lab6.AssemblyInfoInputs.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\obj\Debug\netcoreapp3.1\lab6.AssemblyInfo.cs
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\obj\Debug\netcoreapp3.1\lab6.csproj.CoreCompileInputs.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\obj\Debug\netcoreapp3.1\lab6.dll
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\obj\Debug\netcoreapp3.1\lab6.pdb
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab6\lab6\obj\Debug\netcoreapp3.1\lab6.genruntimeconfig.cache
