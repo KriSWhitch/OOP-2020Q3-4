@@ -4,6 +4,12 @@ using System.Linq;
 namespace lab6
 {
 
+    partial class User
+    {
+        public string name;
+        public int age;
+    }
+
     abstract class Product
     {
         public string name;
@@ -265,7 +271,6 @@ namespace lab6
 
     class Program
     {
-        //Продукт, Кондитерское изделие, Товар, Цветы, Торт, Часы, Конфеты;
 
         static void Main(string[] args)
         {
@@ -280,7 +285,12 @@ namespace lab6
             Console.WriteLine($"day1 = {day1}");
             // Задание 2
             Console.WriteLine($"Задание 2");
-
+            User user = new User();
+            user.name = "Иван";
+            user.age = 16;
+            user.weight = 70;
+            user.height = 178;
+            user.DisplayToScreen();
             // Задание 3
             Console.WriteLine($"Задание 3");
 
