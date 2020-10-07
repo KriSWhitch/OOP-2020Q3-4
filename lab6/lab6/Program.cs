@@ -1,5 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 namespace lab6
 {
@@ -10,9 +16,10 @@ namespace lab6
         public int age;
     }
 
-    abstract class Product
+    class Product
     {
         public string name;
+        public int cost;
         public object[] elList;
 
         public virtual void GetInfo()
@@ -24,11 +31,13 @@ namespace lab6
         public Product()
         {
             this.name = "Без имени";
+            cost = 0;
         }
 
-        public Product(string name)
+        public Product(string name, int cost)
         {
             this.name = name;
+            this.cost = cost;
         }
 
 
@@ -76,7 +85,8 @@ namespace lab6
         {
             return $"Тип данного объекта: {GetType()}\n" +
                 $"ID: {GetHashCode()}\n" +
-                $"";
+                $"Название товара: {name}\n" +
+                $"Стоимость товара: {cost}\n";
         }
     }
 
@@ -269,6 +279,76 @@ namespace lab6
 
     }
 
+    class Bookkeeping : Product // 6.3 Класс-контейнер
+    {
+        
+
+        public Bookkeeping() // Конструктор без параметров
+        {
+
+        }
+
+
+
+        internal List<Product> _list = new List<Product>(); //созд объект коллекции 
+
+
+
+        public Product this[int index] //индексатор
+        {
+            get //возвращаем значение элемента списка
+            {
+                return _list[index];
+            }
+            set //устананавливаем значение для элемента списка с определенным индексом
+            {
+                _list[index] = value;
+            }
+        }
+
+        public void Add(Product obj) //добавление элемента
+        {
+            if (obj == null)//проверка валидности принимаемых значений
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+            _list.Add(obj);
+        }
+
+        public void Remove(Product obj)//удаление элемента
+        {
+            if (obj == null)
+            {
+                throw new ArgumentNullException(nameof(obj));
+            }
+            _list.Remove(obj);
+        }
+
+        public void Information()//вывод инфы о объектах коллекции
+        {
+            Console.WriteLine("Object in collection");
+            foreach (var items in _list)
+            {
+                Console.WriteLine(items.ToString() + " ");
+            }
+        }
+
+        public void Sum()
+        {
+            int sum = 0;
+            Console.Write($"Введите название товара для подсчёты суммарной стоимости данных продуктов: ");
+            string name = Console.ReadLine();
+            foreach (var items in _list)
+            {
+                if (items.name == name) sum += items.cost;
+            }
+            Console.WriteLine($"Суммарная стоимость продуктов: {sum}");
+        }
+
+
+
+    }
+
     class Program
     {
 
@@ -293,7 +373,13 @@ namespace lab6
             user.DisplayToScreen();
             // Задание 3
             Console.WriteLine($"Задание 3");
-
+            Product pr1 = new Product("Молоко", 500);
+            Product pr2 = new Product("Молоко", 1500);
+            Product pr3 = new Product("Молоко", 800);
+            Bookkeeping bk1 = new Bookkeeping();
+            bk1.Add(pr1); bk1.Add(pr2); bk1.Add(pr3);
+            bk1.Information();
+            bk1.Sum();
             // Задание 4
             Console.WriteLine($"Задание 4");
 
