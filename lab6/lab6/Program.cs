@@ -362,7 +362,8 @@ namespace lab6
         static void Main(string[] args)
         {
             // Задание 1
-            Console.WriteLine($"Задание 1");
+
+            Console.WriteLine($"\nЗадание 1\n");
             Product.User user1;
             user1.name = "Tom";
             user1.age = 16;
@@ -370,25 +371,31 @@ namespace lab6
             Product.Days day1;
             day1 = Product.Days.Monday;
             Console.WriteLine($"day1 = {day1}");
+
             // Задание 2
-            Console.WriteLine($"Задание 2");
+
+            Console.WriteLine($"\nЗадание 2\n");
             User user = new User();
             user.name = "Иван";
             user.age = 16;
             user.weight = 70;
             user.height = 178;
             user.DisplayToScreen();
+
             // Задание 3
-            Console.WriteLine($"Задание 3");
+
+            Console.WriteLine($"\nЗадание 3\n");
             Product pr1 = new Product("Молоко", 500);
             Product pr2 = new Product("Молоко", 1500);
             Product pr3 = new Product("Молоко", 800);
             Bookkeeping bk1 = new Bookkeeping();
             bk1.Add(pr1); bk1.Add(pr2); bk1.Add(pr3);
             bk1.Information();
-            TestController.Sum(bk1);
+     
             // Задание 4
-            Console.WriteLine($"Задание 4");
+
+            Console.WriteLine($"\nЗадание 4\n");
+            TestController.Sum(bk1);
 
 
 
