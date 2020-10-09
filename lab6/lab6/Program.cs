@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 
 namespace lab6
@@ -16,7 +17,7 @@ namespace lab6
         public int age;
     }
 
-    class Product
+    public class Product
     {
         public string name;
         public int cost;
@@ -279,7 +280,7 @@ namespace lab6
 
     }
 
-    class Bookkeeping : Product // 6.3 Класс-контейнер
+    public class Bookkeeping : Product // 6.3 Класс-контейнер
     {
         
 
@@ -333,21 +334,27 @@ namespace lab6
             }
         }
 
-        public void Sum()
-        {
-            int sum = 0;
-            Console.Write($"Введите название товара для подсчёты суммарной стоимости данных продуктов: ");
-            string name = Console.ReadLine();
-            foreach (var items in _list)
-            {
-                if (items.name == name) sum += items.cost;
-            }
-            Console.WriteLine($"Суммарная стоимость продуктов: {sum}");
-        }
+
 
 
 
     }
+
+    public static class TestController
+    {
+        public static void Sum(Bookkeeping obj)
+        {
+            int sum = 0;
+            Console.Write($"Введите название товара для подсчёты суммарной стоимости данных продуктов: ");
+            string name = Console.ReadLine();
+            foreach (var items in obj._list)
+            {
+                if (items.name == name) sum += items.cost;
+            }
+            Console.WriteLine($"Суммарная стоимость продуктов: {sum}\n");
+        }
+    }
+
 
     class Program
     {
@@ -379,9 +386,11 @@ namespace lab6
             Bookkeeping bk1 = new Bookkeeping();
             bk1.Add(pr1); bk1.Add(pr2); bk1.Add(pr3);
             bk1.Information();
-            bk1.Sum();
+            TestController.Sum(bk1);
             // Задание 4
             Console.WriteLine($"Задание 4");
+
+
 
         }
 
