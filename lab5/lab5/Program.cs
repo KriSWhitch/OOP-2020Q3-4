@@ -152,6 +152,8 @@ namespace lab5
         }
     }
 
+    // Задание 1. Переопределены стандартные методы
+    // Задание 2. Virtual -> Override
     class Sweets : Goods
     {
         int id;
@@ -167,7 +169,7 @@ namespace lab5
             this.name = name;
             this.id = GetHashCode();
         }
-        public virtual void GetInfo()
+        public override void GetInfo()
         {
             Console.WriteLine($"Название конфет: {name}");
         }
@@ -192,7 +194,7 @@ namespace lab5
 
         public override int GetHashCode()
         {
-            return id.GetHashCode() + 17;
+            return base.GetHashCode() + 17;
         }
 
         public override string ToString()
@@ -204,7 +206,8 @@ namespace lab5
     }
 
 
-    //Задание 4
+    //Задание 4. GetInfo как одноименный метод
+
     interface IMovable
     {
         public void GetInfo()
@@ -256,6 +259,9 @@ namespace lab5
         }
     }
 
+
+    // Задание 3. Бесплодный класс
+
     sealed class Root  // от этого класса нельзя наследовать
     { 
 
@@ -272,21 +278,27 @@ namespace lab5
             Sweets s1 = new Sweets("Алёнка");
             Sweets s0 = new Sweets("Пчёлка");
             Console.WriteLine(s1.Equals(s0));
+            Console.WriteLine(s1.GetType());
             s1.ToString();
+            Console.WriteLine(s1.GetHashCode());
             // Задание 2, 3, 4
             Console.WriteLine($"Задание №2,3,4");
-            Run m1 = new Run();
+            s1.GetInfo(); // Задание 2 virtual -> override 
+            Run m1 = new Run(); // интерфейс
             m1.GetInfo();
-            IMovable m2 = new Run();
+            IMovable m2 = new Run(); // интерфейс созданный на основе интерфеса и абстрактного класса
             m2.GetInfo();
             // Задание 5
             Console.WriteLine($"Задание №5");
             Goods a = new Goods();
             Sweets s = new Sweets();
+            Goods c = new Sweets();
             if (a is Goods)
                 Console.WriteLine("Переменная a имеет тип Goods");
             if (s is Sweets)
                 Console.WriteLine("Тип переменной s унаследован от класса Goods");
+            if (c is Goods) Console.WriteLine("Переменная c имеет тип Goods");
+            else Console.WriteLine("Переменная c имеет тип Sweets");
             // Задание 6, 7
             Console.WriteLine($"Задание №6,7");
             Clock s2 = new Clock("Rolex");
