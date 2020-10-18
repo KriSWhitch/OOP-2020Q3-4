@@ -133,7 +133,142 @@ namespace lab7
         }
     }
 
+    class Clock : Goods
+    {
 
+        private double cost;
+        public double Cost
+        {
+            get { return cost; }
+            set
+            {
+                if (value < 100 || value > 600)
+                {
+                    throw new ClockException("Стоимость часов должна находится между 100 и 600 у.е.", value);
+                }
+                else
+                {
+                    cost = value;
+                }
+            }
+        }
+
+        public Clock()
+        {
+            this.name = "Без имени";
+        }
+
+        public Clock(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название часов: {name}";
+        }
+    }
+
+    class Cake : Pastry
+    {
+        private int diameter;
+        public int Diameter
+        {
+            get { return diameter; }
+            set
+            {
+                if (value > 23 || value < 13)
+                {
+                    throw new CakeException("Диаметр торта не может быть меньше 13 см или больше 23 см", value);
+                }
+                else
+                {
+                    diameter = value;
+                }
+            }
+        }
+
+        public Cake()
+        {
+            this.name = "Без имени";
+        }
+
+        public Cake(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название торта: {name}";
+        }
+    }
+
+    class Sweets : Goods
+    {
+        int id;
+
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (value.Length > 18 || value.Length <= 0)
+                    throw new SweetsException("Название сладостей не может быть меньше 1 или больше 18 символов");
+                else
+                    name = value;
+            }
+        }
+        public Sweets()
+        {
+            this.name = "Без имени";
+            this.id = GetHashCode();
+        }
+
+        public Sweets(string name)
+        {
+            this.name = name;
+            this.id = GetHashCode();
+        }
+        public virtual void GetInfo()
+        {
+            Console.WriteLine($"Название конфет: {name}");
+        }
+
+        public string GetType()
+        {
+            return $"Конфеты";
+        }
+
+        public override bool Equals(object obj)
+        {
+            var item = obj as Sweets;
+
+            if (item == null)
+            {
+                return false;
+            }
+
+            return this.id.Equals(item.id);
+
+        }
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCode() + 17;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название конфет: {name}";
+        }
+    }
 
 
 

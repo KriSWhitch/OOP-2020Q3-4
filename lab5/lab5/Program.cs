@@ -285,9 +285,8 @@ namespace lab5
             Console.WriteLine($"Задание №2,3,4");
             s1.GetInfo(); // Задание 2 virtual -> override 
             Run m1 = new Run(); // интерфейс
-            m1.GetInfo();
-            IMovable m2 = new Run(); // интерфейс созданный на основе интерфеса и абстрактного класса
-            m2.GetInfo();
+            m1.GetInfo(); // вызванный из объекта Run
+            ((IMovable)m1).GetInfo(); // вызванный из интерфейса IMovable
             // Задание 5
             Console.WriteLine($"Задание №5");
             Goods a = new Goods();
