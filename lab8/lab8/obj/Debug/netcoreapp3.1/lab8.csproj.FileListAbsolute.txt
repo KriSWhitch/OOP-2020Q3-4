@@ -1,0 +1,13 @@
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\bin\Debug\netcoreapp3.1\lab8.exe
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\bin\Debug\netcoreapp3.1\lab8.deps.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\bin\Debug\netcoreapp3.1\lab8.runtimeconfig.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\bin\Debug\netcoreapp3.1\lab8.runtimeconfig.dev.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\bin\Debug\netcoreapp3.1\lab8.dll
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\bin\Debug\netcoreapp3.1\lab8.pdb
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\obj\Debug\netcoreapp3.1\lab8.csprojAssemblyReference.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\obj\Debug\netcoreapp3.1\lab8.AssemblyInfoInputs.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\obj\Debug\netcoreapp3.1\lab8.AssemblyInfo.cs
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\obj\Debug\netcoreapp3.1\lab8.csproj.CoreCompileInputs.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\obj\Debug\netcoreapp3.1\lab8.dll
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\obj\Debug\netcoreapp3.1\lab8.pdb
+C:\Users\KriSWhitch\OOP-2020Q3-4\lab8\lab8\obj\Debug\netcoreapp3.1\lab8.genruntimeconfig.cache
