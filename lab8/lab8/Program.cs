@@ -1,7 +1,11 @@
 ﻿using System;
-using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace lab8
 {
@@ -182,6 +186,7 @@ namespace lab8
         { }
     }
 
+
     class Program
     {
         static void Main(string[] args)
@@ -207,6 +212,17 @@ namespace lab8
             }
             //Задание 3
             Console.WriteLine($"Задание №3");
+            List<int> list2 = new List<int>(new int[9] { 4, 5, 18, 56, 8, 9, 11, 12, 30 });
+            List<int> list3 = new List<int>(new int[9] { 4, 5, 18, 56, 8, 9, 11, 12, 30 });
+            List<int> list4 = new List<int>(new int[9] { 4, 5, 18, 56, 8, 9, 11, 12, 30 });
+            Collection coll1 = new Collection();
+            coll1.Add(list2); coll1.Add(list3); coll1.Add(list4);
+            foreach (List<int> el in coll1)
+            {
+                Console.WriteLine($"Список в коллекции: ");
+                el.DisplayListToConsole();
+            }
+
         }
     }
 }
