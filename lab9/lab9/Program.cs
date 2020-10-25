@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace lab9
 {
@@ -66,8 +68,12 @@ namespace lab9
 
     class Program
     {
+        delegate string ShowMethods(string str);
         static void Main(string[] args)
         {
+
+            // Задание 1
+            Console.WriteLine($"Задание №1\n");
             Game hero = new Game("KriSWhitch", 50, 10);
             hero.EventAttack += (message) => Console.WriteLine(message);
             hero.EventHeal += (message) => Console.WriteLine(message);
@@ -91,6 +97,80 @@ namespace lab9
             hero.DoHeal(hero);
             hero.DoHeal(hero);
 
+            Console.ReadLine();
+            Console.Clear();
+            //Задание 2
+            Console.WriteLine($"Задание №2\n");
+            Console.Write($"Введите строку: ");
+            string str = Console.ReadLine();
+
+            ShowMethods meth;
+            meth = DeletePunctuationMarks;
+            meth += DeleteChars;
+            meth += AddChars;
+            meth += ToUpperCase;
+            meth += DeleteSpaces;
+            meth(str);
+
+        }
+        public static string DeletePunctuationMarks(string str)
+        {
+            char[] pattern = new char[6] { '.', ',', ':', ';', '?', '!' };
+            char[] strArray = str.ToCharArray();
+            string outArray = "";
+            for (int i = 0; i < strArray.Length; i++)
+            {
+                if (!pattern.Contains(strArray[i])) outArray += strArray[i];
+            }
+            Console.WriteLine($"Результат: {outArray}");
+            return outArray;
+        }
+
+        public static string DeleteChars( string str)
+        {
+            Console.WriteLine($"Введите то кол-во символов которое вы хотите удалить");
+            int numberOfChars = Int32.Parse(Console.ReadLine());
+            char[] strArray = str.ToCharArray();
+            string outArray = "";
+            for (int i = 0; i < strArray.Length - numberOfChars; i++)
+            {
+                outArray += strArray[i];
+            }
+            Console.WriteLine($"Результат: {outArray}");
+            return outArray;
+        }
+
+        public static string AddChars( string str )
+        {
+            Console.WriteLine($"Введите то кол-во символов которое вы хотите добавить к строке");
+            int numberOfChars = Int32.Parse(Console.ReadLine());
+            Console.WriteLine($"Введите символ");
+            char insertChar = Char.Parse(Console.ReadLine());
+            for (int i = 0; i < numberOfChars; i++)
+            {
+                str += insertChar;
+            }
+            Console.WriteLine($"Результат: {str}");
+            return str;
+        }
+
+        public static string ToUpperCase( string str)
+        {
+            Console.WriteLine($"Результат: {str.ToUpper()}");
+            return str.ToUpper();
+        }
+
+        public static string DeleteSpaces(string str)
+        {
+            char pattern =  ' ';
+            char[] strArray = str.ToCharArray();
+            string outArray = "";
+            for (int i = 0; i < strArray.Length; i++)
+            {
+                if (strArray[i] != pattern) outArray += strArray[i];
+            }
+            Console.WriteLine($"Результат: {outArray}");
+            return outArray;
         }
     }
 }
