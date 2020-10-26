@@ -66,9 +66,13 @@ namespace lab7
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Универсальный обработчик\nИсключение: " + ex.Message);
+                Console.WriteLine("Исключение: " + ex.Message);
                 Console.WriteLine($"Исключение было вызвано в следующем месте: {ex.InnerException}");
                 Console.WriteLine($"{ex.StackTrace}");
+            }
+            catch
+            {
+                Console.WriteLine($"Универсальный обработчик\n");
             }
             finally
             {
