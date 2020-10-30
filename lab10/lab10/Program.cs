@@ -102,7 +102,45 @@ namespace lab10
             if (flowersHash.Contains(flower1)) Console.WriteLine($"flowersHash содержит элемент: \"flower1\"");
 
             // Задание 4
-            ObservableCollection<Flowers> task4 = new ObservableCollection<Flowers>(); 
+            ObservableCollection<Flowers> task4 = new ObservableCollection<Flowers>()
+            {
+                new Flowers { name = "Мак"},
+                new Flowers { name = "Алоэ"},
+                new Flowers { name = "Роза"}
+            };
+
+            task4.CollectionChanged += Flowers_CollectionChanged;
+
+            task4.Add(new Flowers { name = "Ромашка" });
+            task4.RemoveAt(1);
+            task4[0] = new Flowers { name = "Пион" };
+
+            foreach (Flowers flower in task4)
+            {
+                Console.WriteLine(flower.name);
+            }
+
+            Console.Read();
+
+        }
+        private static void Flowers_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add: // если добавление
+                    Flowers newFlower = e.NewItems[0] as Flowers;
+                    Console.WriteLine($"Добавлен новый объект: {newFlower.name}");
+                    break;
+                case NotifyCollectionChangedAction.Remove: // если удаление
+                    Flowers oldFlower = e.OldItems[0] as Flowers;
+                    Console.WriteLine($"Удален объект: {oldFlower.name}");
+                    break;
+                case NotifyCollectionChangedAction.Replace: // если замена
+                    Flowers replacedFlower = e.OldItems[0] as Flowers;
+                    Flowers replacingFlower = e.NewItems[0] as Flowers;
+                    Console.WriteLine($"Объект {replacedFlower.name} заменен объектом {replacingFlower.name}");
+                    break;
+            }
         }
     }
 }
