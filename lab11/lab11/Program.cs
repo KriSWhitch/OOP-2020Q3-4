@@ -5,6 +5,24 @@ using System.Linq;
 
 namespace lab11
 {
+    class Phone
+    {
+        public string Name { get; set; }
+        public string Company { get; set; }
+    }
+
+    class Player
+    {
+        public string Name { get; set; }
+        public string Team { get; set; }
+    }
+    class Team
+    {
+        public string Name { get; set; }
+        public string Country { get; set; }
+    }
+
+
     class Program
     {
         static void Main(string[] args)
@@ -117,6 +135,55 @@ namespace lab11
                 el.GetInfo();
             }
             Console.WriteLine();
+            // Задание 4
+            Console.WriteLine($"Задание №4");
+            List<Phone> phones = new List<Phone>
+            {
+                new Phone {Name="Lumia 430", Company="Microsoft" },
+                new Phone {Name="Mi 5", Company="Xiaomi" },
+                new Phone {Name="LG G 3", Company="LG" },
+                new Phone {Name="iPhone 5", Company="Apple" },
+                new Phone {Name="Lumia 930", Company="Microsoft" },
+                new Phone {Name="iPhone 6", Company="Apple" },
+                new Phone {Name="Lumia 630", Company="Microsoft" },
+                new Phone {Name="LG G 4", Company="LG" }
+            };
+
+            var phoneGroups = (from phone in phones
+                               where phone.Name.Length > 5
+                               orderby phone.Name
+                               group phone by phone.Company);
+
+            var countPhonesInFirstGroup = (
+                              from phone in phones
+                              where phone.Name.Length > 5
+                              orderby phone.Name
+                              group phone by phone.Company).First().Count();
+            Console.WriteLine($"В первой группе: {countPhonesInFirstGroup} телефонов");
+            foreach (IGrouping<string, Phone> g in phoneGroups)
+            {
+                Console.WriteLine($"{g.Key}: ");
+                foreach (var t in g)
+                    Console.WriteLine(t.Name);
+                Console.WriteLine();
+            }
+            // Задание 5
+            Console.WriteLine($"Задание №5");
+            List<Team> teams = new List<Team>()
+            {
+                new Team { Name = "Бавария", Country ="Германия" },
+                new Team { Name = "Барселона", Country ="Испания" }
+            };
+            List<Player> players = new List<Player>()
+            {
+                new Player {Name="Месси", Team="Барселона"},
+                new Player {Name="Неймар", Team="Барселона"},
+                new Player {Name="Роббен", Team="Бавария"}
+            };
+            var result = from pl in players
+                         join t in teams on pl.Team equals t.Name
+                         select new { Name = pl.Name, Team = pl.Team, Country = t.Country };
+            foreach (var item in result) Console.WriteLine($"{item.Name} - {item.Team} ({item.Country})");
         }
     }
 }
