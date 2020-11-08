@@ -6,7 +6,10 @@ namespace lab12
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Cake p2 = new Cake { name = "Графские развалины", Diameter = 40 };
+            MyReflector.ClassInformationToFile(p2);
+            MyReflector.GetClassMethods("lab12.Cake", "System.Int32");
+            MyReflector.CallMethod(p2, "TestTask");
         }
     }
 }
