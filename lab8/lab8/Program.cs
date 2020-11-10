@@ -9,18 +9,217 @@ using Microsoft.VisualBasic;
 
 namespace lab8
 {
+    abstract class Product
+    {
+        public string name;
+        public object[] elList;
+
+        public virtual void GetInfo()
+        {
+            Console.WriteLine($"Название продукта: {name}");
+        }
+
+
+        public Product()
+        {
+            this.name = "Без имени";
+        }
+
+        public Product(string name)
+        {
+            this.name = name;
+        }
+
+
+        public void AppendToEnd(object value)
+        {
+            object[] result = new object[elList.Length + 1];
+            result[result.Length - 1] = value;
+            for (int i = elList.Length - 1; i >= 0; i--)
+            {
+                result[i] = elList[i];
+            }
+            this.elList = result;
+        }
+
+        public void RemoveFromEnd()
+        {
+            object[] result = new object[elList.Length - 1];
+            for (int i = 0; i < elList.Length - 1; i++)
+                result[i] = elList[i];
+            this.elList = result;
+        }
+
+        public void DisplayListToConsole()
+        {
+            if (elList.Length == 0)
+            {
+                Console.WriteLine($"Список пуст!");
+                return;
+            }
+
+            string result = "(";
+            for (int i = 0; i < elList.Length; i++)
+            {
+                if (i == elList.Length - 1) result += $"{elList[i]}";
+                else result += $"{elList[i]}, ";
+
+            }
+            result += ")";
+            Console.WriteLine($"Список: {result}");
+        }
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"";
+        }
+    }
+
+    class Pastry : Product
+    {
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"";
+        }
+    }
+
+    class Goods : Product
+    {
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"";
+        }
+    }
+
+    class Flowers : Goods
+    {
+        public Flowers()
+        {
+            this.name = "Без имени";
+        }
+
+        public Flowers(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название цветов: {name}";
+        }
+    }
+
+    class Cake : Pastry
+    {
+        public Cake()
+        {
+            this.name = "Без имени";
+        }
+
+        public Cake(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"\nТип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название торта: {name}\n";
+        }
+    }
+
+    class Clock : Goods
+    {
+        public Clock()
+        {
+            this.name = "Без имени";
+        }
+
+        public Clock(string name)
+        {
+            this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название часов: {name}";
+        }
+    }
+
+    class Sweets : Goods
+    {
+        int id;
+
+        public Sweets()
+        {
+            this.name = "Без имени";
+            this.id = GetHashCode();
+        }
+
+        public Sweets(string name)
+        {
+            this.name = name;
+            this.id = GetHashCode();
+        }
+        public override void GetInfo()
+        {
+            Console.WriteLine($"Название конфет: {name}");
+        }
+
+        public string GetType()
+        {
+            return $"Конфеты";
+        }
+
+        public override bool Equals(object obj)
+        {
+            var item = obj as Sweets;
+
+            if (item == null)
+            {
+                return false;
+            }
+
+            return this.id.Equals(item.id);
+
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() + 17;
+        }
+
+        public override string ToString()
+        {
+            return $"Тип данного объекта: {GetType()}\n" +
+                $"ID: {GetHashCode()}\n" +
+                $"Название конфет: {name}";
+        }
+    }
 
 
 
-    public interface IStr<T>
-    where T : struct
+    // обобщённый интерфейс для задание 1,2 
+    public interface IStr<T> 
     {
         void RemoveFromEnd();
         void AppendToEnd(T value);
         void DisplayListToConsole();
     }
-
-    class List<T> : IStr<T> where T : struct
+    // обобщённый класс для задания 2
+    class List<T> : IStr<T>
     {
 
         public class Owner
@@ -212,16 +411,16 @@ namespace lab8
             }
             //Задание 3
             Console.WriteLine($"Задание №3");
-            List<int> list2 = new List<int>(new int[9] { 4, 5, 18, 56, 8, 9, 11, 12, 30 });
-            List<int> list3 = new List<int>(new int[9] { 4, 5, 18, 56, 8, 9, 11, 12, 30 });
-            List<int> list4 = new List<int>(new int[9] { 4, 5, 18, 56, 8, 9, 11, 12, 30 });
-            Collection coll1 = new Collection();
-            coll1.Add(list2); coll1.Add(list3); coll1.Add(list4);
-            foreach (List<int> el in coll1)
-            {
-                Console.WriteLine($"Список в коллекции: ");
-                el.DisplayListToConsole();
-            }
+            List<int> list2 = new List<int>(new int[9] { 4, 1, 11, 56, 81, 9, 411, 12, 308 });
+            List<double> list3 = new List<double>(new double[9] { 51, 51, 118, 536, 8, 95, 411, 912, 30 });
+            List<int> list4 = new List<int>(new int[9] { 4, 5, 18, 36, 8, 9, 111, 112, 30 });
+            List<byte> list5 = new List<byte>(new byte[9] { 4, 5, 184, 56, 81, 9, 114, 41, 30 });
+            List<Cake> list6 = new List<Cake>(new Cake[3] { new Cake("Графские развалины"), new Cake("Муравейник"), new Cake("Тортик")});
+            list2.DisplayListToConsole();
+            list3.DisplayListToConsole();
+            list4.DisplayListToConsole();
+            list5.DisplayListToConsole();
+            list6.DisplayListToConsole();
 
         }
     }
