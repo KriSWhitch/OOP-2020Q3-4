@@ -5,11 +5,11 @@ using System.IO.Compression;
 namespace lab13
 {
 
-    class MAVLog
+    class MAVLog // задание 1
     {
         public static void WriteLog(string name)
         {
-            using (StreamWriter st = new StreamWriter(@"MAVlog.txt", true, System.Text.Encoding.Default))
+            using (StreamWriter st = new StreamWriter(@"MAVlog.txt", true))
             {
                 st.WriteLine($"метод -  {name}  , вызван -  {DateTime.Now}");
             }
@@ -18,7 +18,7 @@ namespace lab13
 
     static class MAVDiskInfo
     {
-        public static void FreeSpace(string DN)// свободное место на диске
+        public static void FreeSpace(string DN) // свободное место на диске
         {
             MAVLog.WriteLog("FreeSpace");
             var Driveinfo = DriveInfo.GetDrives();
@@ -30,7 +30,7 @@ namespace lab13
                 }
             }
         }
-        public static void TypeOfFileSystem(string DN) // инфа о файл системе
+        public static void TypeOfFileSystem(string DN) // информация о файловой системе
         {
             MAVLog.WriteLog("TypeOfFileSystem");
             var Driveinfo = DriveInfo.GetDrives();
@@ -48,8 +48,7 @@ namespace lab13
             var Driveinfo = DriveInfo.GetDrives();
             foreach (var d in Driveinfo)
             {
-                if (d.IsReady)
-                    Console.WriteLine($"{d.Name} - {d.TotalFreeSpace} bytes / {d.TotalSize} bytes  -- {d.VolumeLabel}");
+                if (d.IsReady) Console.WriteLine($"{d.Name} - {d.TotalFreeSpace} bytes / {d.TotalSize} bytes  -- {d.VolumeLabel}");
             } // имя объем достпуный объем метка тома
         }
     }
@@ -76,15 +75,14 @@ namespace lab13
         }
     }
 
-    public static class MAVDirInfo // c методами для вывода информации о конкретномдиректории
+    public static class MAVDirInfo // c методами для вывода информации о конкретной директории
 
     {
         public static void GetFiles(string Path)// кол-во файлов
         {
             MAVLog.WriteLog("GetFiles");
             DirectoryInfo d = new DirectoryInfo(Path);
-            foreach (var f in d.GetFiles())
-                Console.WriteLine(f.FullName);
+            foreach (var f in d.GetFiles()) Console.WriteLine(f.FullName);
         }
         public static void GetTime(string Path)// время создания
         {
@@ -96,15 +94,13 @@ namespace lab13
         {
             MAVLog.WriteLog("GetSubDir");
             DirectoryInfo d = new DirectoryInfo(Path);
-            foreach (var f in d.GetDirectories())
-                Console.WriteLine(f.FullName);
+            foreach (var f in d.GetDirectories()) Console.WriteLine(f.FullName);
         }
         public static void GetParentDir(string Path)// список род директориев
         {
             MAVLog.WriteLog("GetParentDir");
             DirectoryInfo d = new DirectoryInfo(Path);
-            foreach (var f in d.Parent.GetDirectories())
-                Console.WriteLine(f.FullName);
+            foreach (var f in d.Parent.GetDirectories()) Console.WriteLine(f.FullName);
         }
     }
     public static class MAVFileManager
