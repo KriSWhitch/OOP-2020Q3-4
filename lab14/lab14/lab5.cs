@@ -3,10 +3,15 @@ using System.Linq;
 
 namespace lab14
 {
-
-    abstract class Product
+    [Serializable]
+    public abstract class Product
     {
         public string name;
+        public string Name
+        {
+            get { return name; }
+            set { this.name = value; }
+        } 
         public object[] elList;
 
         public virtual void GetInfo()
@@ -81,8 +86,8 @@ namespace lab14
                 $"";
         }
     }
-
-    class Goods : Product
+    [Serializable]
+    public class Goods : Product
     {
 
         public override string ToString()
@@ -133,25 +138,6 @@ namespace lab14
         }
     }
 
-    class Clock : Goods
-    {
-        public Clock()
-        {
-            this.name = "Без имени";
-        }
-
-        public Clock(string name)
-        {
-            this.name = name;
-        }
-
-        public override string ToString()
-        {
-            return $"Тип данного объекта: {GetType()}\n" +
-                $"ID: {GetHashCode()}\n" +
-                $"Название часов: {name}";
-        }
-    }
 
     // Задание 1. Переопределены стандартные методы
     // Задание 2. Virtual -> Override

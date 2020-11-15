@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ArrayOfClock xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Clock>
+    <name>Rolex</name>
+    <Name>Rolex</Name>
+  </Clock>
+  <Clock>
+    <name>Casio</name>
+    <Name>Casio</Name>
+  </Clock>
+  <Clock>
+    <name>Q&amp;Q</name>
+    <Name>Q&amp;Q</Name>
+  </Clock>
+</ArrayOfClock>
