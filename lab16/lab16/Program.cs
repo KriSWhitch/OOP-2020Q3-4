@@ -70,6 +70,26 @@ namespace lab16
             }
             Console.WriteLine("=================================================");
         }
+
+        public static void Task2()
+        {//у нас есть возможность отмны этой задачи во время ее выполнения
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            Task task = Task.Factory.StartNew(SimpleNumberSearch);
+            Console.WriteLine($"Task id: {task.Id.ToString()}");
+            Console.WriteLine($"Task status: {task.Status.ToString()}");
+
+            Console.WriteLine("Press q - to exit from task"); //нажми q чтоб выйти из задачи
+            if (Console.ReadKey().KeyChar == 'q')
+            {//Чтобы отменить операцию, необходимо вызвать метод Cancel() у объекта CancellationTokenSource:
+                source.Cancel();
+            }
+
+            task.Wait(); // таймер будет все время ждать пока q не нажмем
+            stopwatch.Stop();
+            Console.WriteLine($"Time for task: {stopwatch.Elapsed.TotalMilliseconds.ToString()}\n");
+            Console.WriteLine("=================================================");
+        }
     }
 
         class Program
@@ -77,6 +97,7 @@ namespace lab16
         static void Main(string[] args)
         {
             Methods.Task1();
+            Methods.Task2();
         }
     }
 }
