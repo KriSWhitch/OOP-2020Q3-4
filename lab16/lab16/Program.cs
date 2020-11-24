@@ -90,14 +90,48 @@ namespace lab16
             Console.WriteLine($"Time for task: {stopwatch.Elapsed.TotalMilliseconds.ToString()}\n");
             Console.WriteLine("=================================================");
         }
+
+        // Methods by formula: m = Vq, where q - density, V - capacity
+        const int capacity = 100;
+        const int density = 1000;
+        const int weight = 6000;
+
+        public static int GetWeight() => capacity * density;
+        public static int GetDensity() => weight / capacity;
+        public static int GetCapacity() => weight / density;
+
+        public static async void Task3_4Asinc()
+        {//. Создайте три задачи с возвратом результата и используйте их для
+            //выполнения четвертой задачи.Например, расчет по формуле.
+            Task<int> task1 = Task.Factory.StartNew(GetWeight); //вызывваем все три задачи в отдельных (асинхронных)задачах
+            Task<int> task2 = Task.Factory.StartNew(GetDensity);
+            Task<int> task3 = Task.Factory.StartNew(GetCapacity);
+            //await значит выполнение асинхронной операции
+            //4. Создайте задачу продолжения (continuation task) в двух вариантах:
+            // C ContinueWith -планировка на основе завершения множества
+            //предшествующих задач
+
+            await task1.ContinueWith((firstTask) => Console.WriteLine($"First task result: {firstTask.Result}")); //выводим на консоль результат после того как задача task1 завершила свою работу
+            await task2.ContinueWith((secondTask) => Console.WriteLine($"Second task result: {secondTask.Result}"));
+            await task3.ContinueWith((thirdTask) => Console.WriteLine($"Third task result: {thirdTask.Result}"));
+
+            task3.ContinueWith((thirdTask) => Console.WriteLine($"Third task result with GetAwaiter(): {thirdTask.Result}")).GetAwaiter();
+            task2.ContinueWith((secondTask) => Console.WriteLine($"Second task result with GetAwaiter().GetResult(): {secondTask.Result}")).GetAwaiter().GetResult();
+            //getresult прекращает ожидание завершение асинхронной задачи
+            Console.WriteLine("================================================\n");
+        }
     }
 
         class Program
     {
         static void Main(string[] args)
         {
-            Methods.Task1();
-            Methods.Task2();
+            //Methods.Task1();
+            //Methods.Task2();
+            Methods.Task3_4Asinc();
+
+            Console.WriteLine("Complete");
+            Console.ReadKey();
         }
     }
 }
