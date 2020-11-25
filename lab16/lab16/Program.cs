@@ -120,6 +120,46 @@ namespace lab16
             //getresult прекращает ожидание завершение асинхронной задачи
             Console.WriteLine("================================================\n");
         }
+
+        public static void Task5()
+        {
+            const int arrSize = 1000000;
+            const int arrCount = 10;
+            Stopwatch stopwatch = Stopwatch.StartNew();//начинаем считать время
+            Parallel.For(0, arrCount, (Count) => //параллельный цикл фор от 0 до arrCount дальше (создаем 11 массивов размером ArrSize)
+            {
+                int[] arr = new int[arrSize];
+                Parallel.ForEach(arr, (el) => //цикл форич где первый параметр коллекция которую перебираем а второй параметр функция анонимная(выполняется для каждой итерации)
+                {
+                    el = arrCount * arrCount;
+                });
+            });
+            stopwatch.Stop();//остановили таймер
+            Console.WriteLine("Time with Parallel.For, Parallel.ForEach: " + stopwatch.Elapsed.Milliseconds.ToString()); //результаты в милисек
+            stopwatch.Restart();//сбросили таймер и запустили его снова
+            for (int i = 0; i < arrCount; i++)
+            {// Оцените производительность по сравнению с обычными циклами
+                int[] arr = new int[arrSize];
+                for (int j = 0; j < arr.Length; j++) arr[j] = arrCount * arrCount;
+            }
+            stopwatch.Stop();
+            Console.WriteLine("Time with two for operators: " + stopwatch.Elapsed.Milliseconds.ToString());
+            Console.WriteLine("===============================================\n");
+        }
+
+        public static void Task6()
+        {
+            Parallel.Invoke(Task6Handler, Task6Handler, Task6Handler); //выполняем все 3 задачи в парралельном режиме
+            Console.WriteLine("===============================================\n");
+        }
+        private static void Task6Handler()
+        {
+            int[] arr = new int[100000];
+            for (int i = 0; i < arr.Length; i++)
+                arr[i] = i * i;
+            Console.WriteLine("Task complete with Parallel.Invoke\n");
+        }
+
     }
 
         class Program
@@ -129,6 +169,8 @@ namespace lab16
             //Methods.Task1();
             //Methods.Task2();
             Methods.Task3_4Asinc();
+            Methods.Task5();
+            Methods.Task6();
 
             Console.WriteLine("Complete");
             Console.ReadKey();
