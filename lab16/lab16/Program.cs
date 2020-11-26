@@ -160,17 +160,90 @@ namespace lab16
             Console.WriteLine("Task complete with Parallel.Invoke\n");
         }
 
+        public class Task7
+        {
+            private static int productCount;
+            private static BlockingCollection<string> products; //создаем потокобезопасную коллекцию(которая якобы хранить товары на нашем складе)
+
+            private static void PutProuct()
+            {
+
+                int productsToPutCount = 1;
+
+
+                Console.WriteLine($"Producer put product {productsToPutCount} to warehouse"); //производитель завез в магазин такое то кол во продуктов(обвуи)
+                //ShowWarehouse();
+                productCount++;
+                products.CompleteAdding();
+            }
+
+            private static void TakeProduct()
+            {
+                string productToTake;
+                while (!products.IsCompleted) //если коллекция не закрыта для добавления элементов
+                {
+                    if (products.TryTake(out productToTake))//удалить элемент из коллекции
+                        Console.WriteLine($"Consumer takes a {productToTake} from warehouse"); //покупатель купил что то
+                                                                                               //ShowWarehouse();
+                }
+            }
+
+
+            private static void ShowWarehouse() //показать обувной магазин
+            {
+                Console.WriteLine("------------Products------------");
+                foreach (var product in products) //перебираем продукты из нашей нашего магазина
+                    Console.WriteLine(product);
+                Console.WriteLine("--------------------------------\n\n");
+            }
+
+            public static void TaskMain()
+            {
+                productCount = 0;
+                products = new BlockingCollection<string>();
+
+                Task[] producers = new Task[] //производители массив задач
+                {
+                    Task.Factory.StartNew(PutProuct),
+                    Task.Factory.StartNew(PutProuct),
+                    Task.Factory.StartNew(PutProuct),
+                    Task.Factory.StartNew(PutProuct),
+                    Task.Factory.StartNew(PutProuct)
+                };
+                Task[] consumers = new Task[] //покупатели массив задач
+                {
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct),
+                    Task.Factory.StartNew(TakeProduct)
+                };
+
+                Task.WaitAll(producers.Concat(consumers).ToArray()); //ожидание выполнения producers и consumers и объединяет в один массив задач
+                foreach (var pr in producers) pr.Dispose(); //перебираем все задачи в массиве producers и удаляем все ресурсы связанные с каждой задачей
+                foreach (var con in consumers) con.Dispose();
+                Console.WriteLine("\n==============================================\n");
+                Console.ReadKey();
+            }
+        }
+
     }
 
         class Program
     {
         static void Main(string[] args)
         {
-            //Methods.Task1();
-            //Methods.Task2();
+            Methods.Task1();
+            Methods.Task2();
             Methods.Task3_4Asinc();
             Methods.Task5();
             Methods.Task6();
+            Methods.Task7.TaskMain();
 
             Console.WriteLine("Complete");
             Console.ReadKey();
