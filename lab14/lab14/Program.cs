@@ -119,7 +119,7 @@ namespace lab14
                 }
             }
 
-            // Задание 3 
+            // Задание 3. Два селектора для XML документа
 
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load("clocks2.xml");
@@ -134,7 +134,7 @@ namespace lab14
             Console.WriteLine($"Часы Rolex: ");
             foreach (XmlNode n in childnodes) Console.WriteLine(n.OuterXml);
 
-            // Задание 4
+            // Задание 4 Используя Linq to XML (или Linq to JSON) создан новый xml документ и написано несколько запросов.
 
             XDocument xdoc = XDocument.Load("clocks2.xml");
             foreach (XElement clockElement in xdoc.Element("ArrayOfClock").Elements("Clock"))
