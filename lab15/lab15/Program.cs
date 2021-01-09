@@ -29,11 +29,7 @@ namespace lab15
             {
                 Console.WriteLine($"Имя сборки: {el.GetName().Name}");
             }
-            //создание и настройка домена ( не поддерживается на ОС Windows)
-            //Assembly[] assembly = domain.GetAssemblies();
-            //AppDomain newDomain = AppDomain.CreateDomain("NewDomain");//создаем новый домен
-            //newDomain.Load(assembly[1].GetName().Name);//получаем имя сборки
-            //AppDomain.Unload(newDomain);
+
 
             // Задание 3
 
