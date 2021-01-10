@@ -1,0 +1,13 @@
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\bin\Debug\netcoreapp3.1\№3-2.exe
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\bin\Debug\netcoreapp3.1\№3-2.deps.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\bin\Debug\netcoreapp3.1\№3-2.runtimeconfig.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\bin\Debug\netcoreapp3.1\№3-2.runtimeconfig.dev.json
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\bin\Debug\netcoreapp3.1\№3-2.dll
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\bin\Debug\netcoreapp3.1\№3-2.pdb
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\obj\Debug\netcoreapp3.1\№3-2.csprojAssemblyReference.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\obj\Debug\netcoreapp3.1\№3-2.AssemblyInfoInputs.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\obj\Debug\netcoreapp3.1\№3-2.AssemblyInfo.cs
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\obj\Debug\netcoreapp3.1\№3-2.csproj.CoreCompileInputs.cache
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\obj\Debug\netcoreapp3.1\№3-2.dll
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\obj\Debug\netcoreapp3.1\№3-2.pdb
+C:\Users\KriSWhitch\OOP-2020Q3-4\exam-tasks\№3-2\№3-2\obj\Debug\netcoreapp3.1\№3-2.genruntimeconfig.cache
